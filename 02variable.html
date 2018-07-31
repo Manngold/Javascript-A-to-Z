@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Variable</title>
+</head>
+<body>
+    <script>
+        /*
+        이번 챕터에서는 변수에 대해서 배웁니다.
+        변수는 프로그래밍을 하면서 코드에 대한 이해가 더 쉽게 되도록 도와주고
+        목적에 맞게 설정이 용이합니다.
+
+        기존 var를 이용한 변수 설정을 했지만 ES6부터 const와 let을 사용합니다
+        const는 constant의 줄임말로 값을 넣어주면 변동이 안됩니다
+        값을 넣을 때에는 어떠한 데이터 타입도 넣을 수 있습니다.
+        */
+        const cityName = "Seoul";
+        console.log(cityName);//const 값 출력
+        //cityName = "Busan" 으로 재할당 하려하면 에러 발생
+        /*
+        추가적으로 변수 안에서 space는 허용이 되지 않으므로 가독성을 높이기위해
+        띄어쓰기하는 다음 단어를 대문자로 작성해서 가독성을 높입니다. 이 방법을 camelCasing이라고 합니다
+        낙타 등처럼 생겨서 이렇게 비유를 해서 이름을 붙였나보네요 
+        */
+        
+        /*
+        위 과정에서 const의 값을 바꾸려하면 에러가 발생합니다. 그래서 나온 것이 let입니다
+        let 변수는 값의 재할당이 가능합니다.
+        */
+        let food = "chicken";
+        console.log(food);//chicken
+        food = "pizza";
+        console.log(food);//pizza
+        //결과적으로 const는 프로그램 내에서 변동이 없는 값 let은 변동이 있는 값을 넣을 때, 사용됩니다.
+        
+        /*
+        변수를 선언하긴 했지만 그 안에 값을 넣지 않으면 어떻게 되나요?
+        Javascript에서는 해당 변수를 메모리에 저장하긴 하지만 프로그래머가 변수에 저장된 값이 없다는 것을
+        알려주기 위해서 undefined를 출력합니다.
+        */
+
+        let noValue;
+        console.log(noValue);
+
+        /*
+        할당 연산자
+        */
+        let x = 5;
+        x = x + 1;//x에 1을 더하는 것을
+        x += 1; //할당연산자를 사용하면 간결하게 표현이 가능하다
+        x -= 1; //빼기 곱하기 나누기 나머지 다 가능하다.
+        x *= 1;
+        console.log(x /= 2);
+        console.log(x %= 2);
+        x++;
+        x--;
+        ++x;
+        --x; //등으로 1씩 증감이 가능한 연산자 표기법이다.
+
+        /*
+        문자열에 + 를 사용한다면 해당 문자열을 이어준다.
+        */
+
+        console.log("Hello " + "World");//Hello World 출력
+
+        //ES6에서는 변수를 string 문자열에 넣을 때, +를 사용하지 않아도 된다.
+        let id = "Manngold";
+        console.log("My id is " + id + "Hello~");//기존 변수를 문자열에 넣는 방식
+        console.log(`My id is ${id} Hello~`);//backticks (키보드 1옆에 있는 `)으로 감싸고 ${변수}를 넣으면 된다
+        
+        </script>
+</body>
+</html>
