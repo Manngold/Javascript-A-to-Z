@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Control Flow</title>
+</head>
+<body>
+    <script>
+        /*
+        이번 챕터는 control flow에 대해서 알아봅니다
+        앱을 작성할 때, 어떤 상황이나 조건에 의해서 다른 코드가 진행해야 하는 경우가 있다
+
+        예를 들면 앞서 언급했던 To Do 앱을 만들 때 할 일을 입력하게 되는데 
+        입력을 할 때, 값이 없으면 값을 넣으라는 알림을 띄우고 값이 있으면 할 일을 저장하는 코드가 
+        진행되도록 하는 기능입니다.
+        */
+
+        /*
+        if 문
+        기본적으로 if문은 
+        if(조건){
+            조건이 참일 경우 시행되는 문장
+        }
+        else{
+            조건이 거짓일 경우 시행되는 문장
+        }
+        으로 구성됩니다. 조건에는 true나 false가 들어갈 수도 있고 혹은 데이터 타입이 ~인 경우
+        등등 여러가지가 들어갈 수 있습니다.
+        */
+        let driveMode = true;
+        if(driveMode){
+            console.log("Drive Mode is online");//조건이 참인 경우.
+        }
+        else{
+            console.log("Drive Mode is offline");//조건이 거짓일 때, 실행됨
+        }
+
+        //만약 다른 조건을 추가한다면 else if로 조건을 추가할 수 있습니다.
+
+        let speed = 30;
+        let seatBelt = false;
+
+        if(speed >= 20 && seatBelt){ //여기서 &&는 두 조건 모두가 참일 때, true가 됩니다.
+            console.log("Door Lock");
+        }
+        else if(!seatBelt && speed >= 20){//!는 부정을 나타내는 기호로 
+            console.log("Seat Belt Alram");
+        }
+        else{
+            console.log("nothing");
+        }
+
+        /*
+        switch 문
+        이전에 예제처럼 조건이 1개에서 2개정도가 아니라 10개 20개가 된다면 어떨까요?
+        수 많은 else if와 괄호들이 쭉 늘어져있고 가독성은 떨어지게 될겁니다.
+        
+        switch (조건) {
+            case 조건:
+            실행문 
+            break;
+        }
+        가 기본으로 문법이 구성됩니다. 여기서 break는 더이상 구문이 실행되는 것을 막습니다 
+        */
+
+        let fruit = "apple";
+
+        switch (fruit) {
+            case "apple":
+                console.log("1$");
+                break;
+
+            case "tomato":
+                console.log("2$");
+                break;
+            case "banana":
+                console.log("3$");
+                break;
+            default: //위 case에 맞는 조건이 없을 때, 출력되는 값입니다.
+                console.log("nothing");
+                break;
+
+        }
+
+        /*
+        삼항연산자
+
+        기본적인 if else 문을 쓸 때, 
+        if (조건){
+            실행문
+        } else{
+            실행문
+        }
+        의 구문을 따르는데 Javascript는 삼항연산자를 이용하여 코드의 길이를 줄여줘서
+        간결하게 만들어줍니다 
+
+        조건 ? 참일때 실행문 : 거짓일때 실행문 으로 구성되어있고
+
+        이해를 돕기위해 설명드리자면
+
+        조건이 맞니 ? 그러면 이거 : 아니면 이거 로 이해하시면 이해하시는데 도움이 되지 않을까 생각이 됩니다
+        */
+
+        let nickName = "Manngold";
+
+        nickName ? console.log("Check nick name") : console.log("insert nick name");
+        //이렇게 한줄로 if else 문의 기능을 표현했습니다
+        //추가적으로 삼항 연산자를 통해서 else if의 기능도 수행할 수 있는데 이건 스스로 생각하고 코드를 짜보시는게 도움이 될 거 같습니다.
+    </script>
+</body>
+</html>
