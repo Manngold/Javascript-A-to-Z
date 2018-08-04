@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loop</title>
+</head>
+<body>
+    <script>
+        /*
+        컴퓨터의 장점중 하나는 무엇일까요?
+        저는 반복적인 작업을 빠르게 수행하는 능력이라고 생각합니다.
+        물론 그 작업의 내용은 사람이 정해줘야합니다. 컴퓨터는 그저 사람이 정해준대로 할 뿐이죠
+        이번 챕터에서는 loop에 대해서 배워봅시다.
+
+        간단한 예로 loop의 필요성해 대해서 알아봅시다
+
+        1부터 100까지 더하는 작업을 해봅시다
+        */
+
+        //let sum = 1+2+3+4+5+6 ~~~~~~ 언제 다 하나요? loop를 쓰면 어떨까요
+        let sum = 0;
+        for(let i = 1 ; i <= 100 ; i++){
+            sum += i;
+        }
+        console.log(sum);
+        
+        let count = 0;
+        let i = 1;
+        while (i <= 100){
+            count += i;
+            i++
+        }
+        console.log(count);
+        /*
+        loop의 두 가지 형식인 for문과 while문으로 1부터 100까지 더하는 코드를 짜보았습니다.
+
+        우선 for문부터 살펴보겠습니다
+
+        for문의 기본 구성은 
+
+        for(초기값 ; 조건 ; 증감연산자 ){
+            실행문 
+        }
+        으로 구성되어있습니다. 위에 예시로 넣은 for문을 해석하자면 i는 1이고 실행문이 실행될 때마다 i가 1씩 증가하며
+        i가 100을 넘는 순간 loop가 종료됩니다
+
+        while문은 for문에 비해 비교적 간단한 구성입니다
+
+        while(조건문){
+            실행문
+        }
+        으로 구성이 되어있고 예시를 해석하자면 i가 100이하일 때, 실행문이 계속됩니다.
+        for문과 다른점은 초기값과 증감연산자가 없으므로 코드를 짜는 사람이 블록 안이나 밖에서 지정을 해주는 형식입니다
+        */
+
+        /*
+        배열에서의 loop 사용
+        배열과 loop의 사용으로 배열의 활용성을 높여줍니다.
+        간단한 경품 코드를 짜겠습니다.
+        */
+
+        let box = ["phone", "notebook", "desktop", "bike", "earphone", "keyboard"];
+        
+        for (let pickCount = 0; pickCount < 3; pickCount++){
+            console.log(box[Math.floor(Math.random() * 6)]);
+        }
+        /*
+        위 코드는 3번 추첨을 하는데 box에서 랜덤으로 경품을 뽑아내는 것입니다.
+        다음은 배열의 크기가 크다고 가정을 하고 반복문으로 배열 요소를 출력하는 코드입니다.
+        */
+        for(let count = 0; count < box.length; count++){
+            console.log(box[count]);
+        }
+        /*
+        배열의 길이 속성을 활용해서 매우 큰 배열을 순차적으로 출력을 해냅니다
+        loop가 없는 상태에서 이런 출력
+        console.log(box[0]);
+        console.log(box[1]);
+        console.log(box[2]);
+        console.log(box[3]); 이런식으로 찍어내야하는데 배열의 크기가 매우 커지면 어떻게 일일이 다 찍어낼까요?
+        이렇게 loop는 활용성이 매우 크고 조건문이나 배열 메소드 속성들과 함께 사용하면 그 활용가치는 더욱 더 높아집니다
+        */
+    </script>
+</body>
+</html>
