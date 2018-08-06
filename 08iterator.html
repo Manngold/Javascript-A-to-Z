@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iterator</title>
+</head>
+<body>
+    <script>
+        /*
+        6번째 강의에서는 array 7번째 강의는 loop에 대해서 알아봤습니다
+        코딩을 하면서 가장 많이 하는 일이 배열을 이용해서 loop를 돌려서 
+        데이터를 특정 조건에 따라 불러오거나 수정을 합니다.
+        이러한 작업을 for나 while 을 이용해서 작업을 하는데
+        javascript에서는 array에 이 작업을 간단하게 수행하도록 도와주는 메소드를 지원합니다
+        이를 iterator라고 칭하고 번역된건 반복 메서드라고 하네요
+
+        .forEach()
+
+        forEach 메서드는 배열의 요소에 특정 실행문을 적용시킵니다.
+
+        예로 ToDo를 나열해주는 코드를 보겠습니다. for문과 비교해서 보여드리겠습니다.
+        */
+        let toDoList = ["study", "meet friend", "work", "gym", "nap"];
+
+        for(let toDoIndex = 0; toDoIndex < toDoList.length; toDoIndex++){
+            console.log("-" + toDoList[toDoIndex]);
+        };
+        //for문 을 이용한 array 조회
+
+        toDoList.forEach(toDo => {
+            console.log("-" + toDo);
+        });
+        //forEach문을 이용한 array조회 
+
+        //.map()
+
+        /*
+        map 메소드는 array 요소의 수정이 가능합니다.
+        */
+        let smallNumbers = [1, 2, 3, 4, 5];
+
+        let tenTimesNumbers = smallNumbers.map(number => {
+            return number * 10;
+        });
+        //새로운 배열에 기존 배열에 10을 곱한 새로운 array를 반환합니다.
+
+        //.filter()
+
+        /*
+        filter를 이용한 특정 조건의 요소를 반환합니다.
+        기존 수에서 3이하의 숫자로 배열을 생성합니다.
+        */
+        let threeNum = smallNumbers.filter(number => {
+            return number <= 3;
+        });
+        console.log(threeNum);//[1,2,3] 반환
+
+        //.some()
+
+        /*
+        array의 요소중에 조건에 부합하는 요소가 있는지 true false로 반환합니다.
+        배열에서 2가 있는지 확인을 합니다. 
+        */
+        console.log(smallNumbers.some(number => {
+            return number = 2;
+        }))
+    </script>
+</body>
+</html>
