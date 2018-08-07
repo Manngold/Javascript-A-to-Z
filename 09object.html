@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        /*
+        자바스크립트에서 object란 데이터를 담아 놓을 수 있는 박스입니다.
+        컴퓨터가 자동으로 정렬을 해주는 것이 아니고 코딩을 하는 사람이 자신의 프로그램에 맞도록
+        key와 value를 설정해서 넣습니다. object의 구성은 대략 이렇습니다.
+
+        let 이름 = {
+            key: value,
+            key2: value2
+        };
+        으로 구성 되어 있습니다. key와 value는 : 로 구분을 하고
+        다른 key와 value를 구분할 때, , 로 구분을 합니다.
+        value에는 어떠한 데이터 타입도 입력이 가능합니다. object, array도 가능합니다.
+        간단한 object 예시입니다.
+        */
+        let cafe = {
+            name: "Tom N Toms",
+            capacity: 30,
+            hasWifi: true,
+            bestMenu: ["Americano", "Cafe Latte", "Fraffe"]
+        };
+
+        //value 접근은 다음과 같습니다. object명.key
+        console.log(cafe.bestMenu);//["Americano", "Cafe Latte", "Fraffe"]
+        //[]을 이용한 value 접근입니다
+        console.log(cafe['capacity']);
+        
+        /*
+        []을 이용한 접근이 별로 와닿지 않을 수 있습니다. 활용 예를 보겠습니다.
+        카페 시간대에 따른 이벤트를 넣겠습니다.
+        */
+        let eventType = null;
+        let time = 10;
+        const timeEvent = {
+            morning: "Americano 50% discount",
+            lunch: "Take out 20% discount",
+            night: "Bread 30% discount"
+        };
+
+        if(time < 12){
+            eventType = "morning";
+        }
+        else if (time >= 12 && time <= 17 ){
+            eventType = "launch";
+        }
+        else eventType = "night";
+
+        console.log(timeEvent[eventType]);
+        /*
+        이런 방식으로 간단한 조건문, 변수를 추가해서 object에 변화를 줍니다.
+        활용범위가 매우 다양해집니다.
+
+        object에 새로운 key와 value를 추가하고 싶을 때에는 다음과 같습니다.
+        */
+        cafe.openTime = 7;
+        console.log(cafe);//object에 추가가 된 것을 확인할 수 있습니다.
+
+        cafe.openTime = 6; //이미 요소가 있는 상태에서 다시 할당을 하면 요소가 수정됩니다.
+
+        /*
+        앞서 설명했듯이 object의 value에는 어떠한 값이든 올 수 있습니다
+        string number array booleans.. 여기에는 function 또한 value가 될 수 있습니다.
+        */
+
+        cafe.call = () => {
+            return "Call to Tom N Toms";
+        };//바로 전에 알아봤던 요소를 추가하는 방식을 똑같이 이용해서 arrow function을 이용해서
+         //parameter가 없는 함수를 하나 만들었습니다.  
+        console.log(cafe.call());//호출하는 방식이 라이브러리 method를 호출하는 것과 같죠?
+
+        /*
+        그렇다면 기존 object에서 함수를 선언하려면
+        call: () => {
+            return "Call to Tom N Toms"
+        }로 입력을 해야 하는데 : 표시가 불필요해 보입니다. 
+        그래서 ES6부터는 함수를 object에 추가할 때, : 표시를 쓰지 않고도 함수를 선언할 수 있습니다.
+
+        call() {
+            return "Call to Tom N Toms";
+        } 로 깔끔하게 수정이 가능합니다.
+
+        this
+
+        this는 스코프가 존재하는 자바스크립트에서 가장 유용한 도구라고 생각합니다.
+        설명보단 코드를 보면서 알아보겠습니다.
+        방의 옵션이 나열되어 있는데 checkPassword 메소드가
+        wifi가 있으면 패스워드를 변경하고 없으면 wifi를 사도록 합니다.
+        */
+
+        let roomOption = {
+            bed: true,
+            wifi: true,
+            checkWiFi() {
+                if(this.wifi){
+                    return "edit Password";
+                }
+                else{
+                    return "buy wifi";
+                }
+            }
+        }
+        /*
+        그렇다면 wifi가 true인지 false인지 조건문에 따라 체크를 해야하는데 왜 this를 썼을까요
+        바로 JS의 Scope 때문입니다.
+
+        checkWiFi에서 wifi는 Scope로 인하여 정의되지 않은 값으로 뜹니다.하지만
+        여기서 this.wifi를 사용한다면 this는 현재 자신이 있는 object를 가리키고있기 때문에
+        roomOption.wifi로 되는 것 입니다. 따라서 checkWiFi의 Scope를 피해서 
+        wifi 데이터에 접근할 수 있는 것 입니다.
+        */
+        console.log(roomOption.checkWiFi());
+        /*
+        this의 장점 중 하나는 바로 유연함입니다 
+        만약 저기서 다른 방의 wifi 옵션을 확인하려하는데 코드의 중복을 최소화하기 위해서 
+        다음과 같이 작성합니다.
+        */
+        let anotherRoomOption = {
+            bed: true,
+            wifi: false
+        };
+        anotherRoomOption.checkWiFi = roomOption.checkWiFi;
+
+        console.log(anotherRoomOption.checkWiFi());
+    </script>
+</body>
+</html>
