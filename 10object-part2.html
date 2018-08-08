@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Object</title>
+</head>
+<body>
+    <script>
+        /*
+        가장 많이 쓰는 object 디자인 중 하나는
+        getter 메소드와 setter 메소드를 object에 포함시키는 것 입니다.
+        새로운 데이터를 설정할 때, 그 데이터가 타당한지 체크가 가능합니다
+        데이터를 가져오거나 설정 할 때, 작업 수행이 가능합니다
+
+        예시 코드를 하나 작성하겠습니다.
+        */
+        let cafe = {
+            _name: "Tom N Toms",
+            _capacity: 50,
+            _wifi: true,
+            _menu: ["Americano", "Frappe", "Ade", "Iced tea"],
+            set capacity(editCapacity){
+                if(typeof editCapacity === 'number'){//수정된 카페 수용인원의 데이터 타입 체크
+                    this._capacity = editCapacity;//맞다면 수정
+                    console.log("valid input");//정상적으로 작동되었을 때, 로그
+                }
+                else{//데이터 타입이 다를 경우
+                    console.log(`change data type to a number ${editCapacity} is not number`);
+                }
+            },
+            get capacity() {
+                console.log(`Tom N Toms ${this._capacity} capacity`);
+                return this._capacity;
+            }
+        }
+        /*
+        여기서 언더스코어 _ 요것은 개발자들이 이 key와 value는 
+        다른 코드에 의해서 직접적으로 수정이 되지 말아야한다! 라고 표시를 해둔것입니다
+        아래 setter 을 통해서 타당성을 입증하고 그에 따라 수정을 하는 것이죠,
+        다음은 setter 메소드의 사용법입니다
+        */
+        cafe.capacity = 70; //valid input; 특징은 메소드 방식으로 사용하지 않아도 되는 점 입니다.
+        cafe.capacity = "70";//change data type to a number 70 is not number
+        /*
+        데이터 타입이 number가 아닌 string 타입이기 때문에 else문이 출력됩니다.
+        
+        데이터를 세팅했으니 가져오기도 해야겠죠? 
+
+        getter 메소드로 데이터를 가져오면 됩니다. getter 메소드 코드는 미리 작성을 해뒀으니
+        위에 코드를 참고하시면 됩니다.
+
+        get 메소드를 사용할 때도 set 메소드와 마찬가지로 메소드 방식으로 불러오지 않습니다
+        */
+        console.log(cafe.capacity);
+        //set을 통해서 수정된 70의 capacity 값이 들어옵니다.
+    </script>
+</body>
+</html>

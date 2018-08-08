@@ -126,10 +126,11 @@
         let anotherRoomOption = {
             bed: true,
             wifi: false
-        };
+        };//wifi가 false인 object 생성
         anotherRoomOption.checkWiFi = roomOption.checkWiFi;
+        //roomOption Object의 메서드를 그대로 가져오면 this가 roomOption을 가리키는 것 같지만
+        console.log(anotherRoomOption.checkWiFi());//this의 유연함 때문에 anotherRoomOption을 가리킵니다.
 
-        console.log(anotherRoomOption.checkWiFi());
     </script>
 </body>
 </html>
