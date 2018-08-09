@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inheritance</title>
+</head>
+<body>
+    <script>
+        /*
+        이전 class 챕터에서는 cafe라는 클래스가 있었습니다.
+        이번에는 강아지 클래스로 생각해봅시다. 그리고 고양이 클래스도 있다고 생각해보죠
+        그렇다면 강아지 고양이 모두 각자 클래스를 생성 생성해야 하나요?
+        벌써부터 코드의 양이 늘어나는 느낌이 옵니다.
+
+        Javascript에서는 inheritance(상속)의 기능이 있습니다.
+        
+        공통 속성들을 넣은 하나의 큰 클래스를 넣고 (위의 경우에는 동물로 되겠죠?)
+        그 속성을 사용하는 작은 클래스 (강아지 고양이) 들에게 큰 클래스의 공통 속성을 이어받고
+        강아지나 고양이의 특수 속성은 그때 추가를 해주는 것이죠
+
+        이를 통해서 개발자는 코드의 양을 줄일 수 있습니다.
+        
+        */
+
+        class Person {
+            constructor(name, age) {
+                this._name = name;
+                this._age = age;    
+            }
+
+            get name () {
+                return this._name;
+            }
+
+            get age () {
+                return this._age;
+            }
+
+            sayHi() {
+                console.log(`Hello my name is ${this._name}`);
+            }
+        }
+        const fourFoot = new Person('fourFoot', '25');
+        fourFoot.sayHi();
+        /*
+        Person이라는 클래스를 생성하고 인스턴스를 만들었습니다.
+        이제 여기서 developer라는 class를 생성하겠습니다.
+        개발자도 사람이므로 person의 기능을 할 수 있겠죠?
+        그러므로 똑같은 코드를 작성할 필요 없이 Person 클래스의 속성을 이어 받으면 됩니다.
+        */
+
+        class Developer extends Person {
+            constructor(name, age, position){
+                super(name, age);//부모 클래스로부터 상속받을 정보를 받아옵니다
+                this._position = position;//super을 사용하지 않으면 this를 사용할 수 없습니다.
+            }
+
+            get position () {
+                return this._position;
+            }
+
+            introduce () {
+                console.log(`My name is ${this._name} and my positon is ${this._position}`);
+            }//부모 클래스에서 필요한 것을 상속받고 자식클래스에서 필요한 코드를 추가로 작성합니다
+        }
+        const manngold = new Developer('Manngold', '25', 'Front-End');
+        manngold.introduce();
+        manngold.sayHi();//상속을 받았으므로 sayHi도 사용이 가능합니다.
+        console.log(manngold.age);//super에 인자를 전달하지 않으면 undefined 출력됨
+    </script>
+</body>
+</html>
