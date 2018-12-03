@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>what is scope</title>
+  </head>
+  <body>
+    <script>
+      /* 
+        프로그래밍 언어에서 가장 기본적인 패러다임은 변수에 값을 저장하고 나중에 검색하거나 수정을 하는 것이다
+
+        이러한 개념이 없었다면, 프로그램은 일을 수행하지 못하고, 프로그래밍은 노잼에 극혐이 되어버립니다.
+
+        여기서 나오는 흥미로운 궁금증은 도대체 변수는 어디에 있는건가 입니다. 다른 말로 하자면 어디에 걔네들이 저장이 되는지 말입니다
+        또한 어떻게 그 변수들을 나중에 다시 찾아오는지도 말이죠 그래서 이에 관해서 'Scope'라는 규칙과 이름을 정하고 사용합니다.
+
+        compiler theory
+        - tokenizing / lexing 
+            => var a = 2;라는 문장이 있으면s var, a , = , 2, ;로 쪼갠다  (띄어쓰기는 의미가 있느냐 없느냐에 따라 토큰이 될 수도 안될 수도)
+        - parsing
+            => 쪼개진 토큰들을 모아서 나무를 만드는데 이것을 "AST(Abstract Syntax Tree)"라고 한다
+                가장 첫번째 노드를 Variable Declaration 그 다음 자식 노드를 Identifier (a를 설명), 다른 자식 노드를 AssignmentExpression라고 하는데
+                자식 노드는 NumericLiteral 이 있다 (2가 여기에 해당됨)
+        - code generation
+            =>AST 과정에서 실행 가능한 코드로 된다. 이 부분은 언어에 따라, 대상으로 하는 플랫폼 등에 따라 다릅니다.
+              이 과정에서 기계는 a라는 변수를 형성하고 값을 저장합니다(ㅂ)
+        
+        하지만 자바스크립트 엔진은 위의 세가지 단계보다 더 크고 복잡합니다 
+
+        자바스크립트에서는 코드가 실행되기 전에 컴파일이 발생합니다(microsecond or less!)
+
+        Scope 이해하기
+        -Scope에 대해서 배울 때, 대화의 관점에서 바라볼 것입니다. (누가 대화를 하고 있는가?)s
+
+        */
+    </script>
+  </body>
+</html>
