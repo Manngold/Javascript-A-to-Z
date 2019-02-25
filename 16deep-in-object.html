@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Deep in object</title>
+  </head>
+  <body>
+    <script>
+      function Person(name, age, hobby) {
+        this.name = name;
+        this.age = age;
+        this.hobby = hobby;
+      }
+
+      Person.prototype.askHobby = function() {
+        console.log(`${this.name}'s hobby is ${this.hobby} `);
+      };
+
+      var mark = new Person("mark", 25, "swim");
+
+      mark.askHobby(); //mark's hobby is swim
+
+      //hasOwnproperty => 객체의 속성이 상속받지 않은 속성인지 알려줌 즉, 지산의 속성이면 true 부모의 속성이거나 아니면 false를 반환
+
+      console.log(mark.hasOwnProperty("name")); //자신의 속성이므로 true
+      console.log(mark.hasOwnProperty("age")); //마찬가지로  true
+      console.log(mark.hasOwnProperty("askHobby")); //false mark 고유의 속성이 아니기 때문
+      //askHobby는 Person.prototype에서 __proto__객체를 이용한 참조 메소드이다.
+
+      console.log(mark.__proto__.hasOwnProperty("askHobby")); //mark.__proto__는 Person.prototype을 참조한 객체이므로 askHobby가 있다
+      console.log(Person.prototype.hasOwnProperty("askHobby"));
+
+      //부모 객체 확인 isPrototypeOf
+
+      var GrandParent = function() {};
+
+      var Parent = function() {};
+      Parent.prototype = new GrandParent();
+      Parent.prototype.constructor = Parent;
+
+      var Child = function() {};
+      Child.prototype = new Parent();
+      Child.prototype.constructor = Child;
+
+      var mike = new Child();
+
+      console.log(Parent.prototype.isPrototypeOf(mike));
+      console.log(GrandParent.prototype.isPrototypeOf(mike));
+
+      console.log(mike instanceof Parent); //child가 Parent의 instance인지 확인 할 수 있다.
+
+      var a = [false, true, "2"];
+
+      console.log(a.propertyIsEnumerable(0)); //열거 가능한 속성인지 확인
+
+      //Object.create()속성들
+
+      var obj = {};
+      var obj2 = Object.create(null, {
+        a: {
+          writable: true, //속성값 변경
+          configurable: false, //속성의 설명 변경
+          value: 5
+        }
+      });
+      //enumerable : for .. in ..안에서 사용 가능한지
+
+      console.log(obj2.a);
+
+      //Object.defineProperties 객체 속성 자세하기 정의하기
+
+      var obj3 = {};
+      Object.defineProperties(obj3, {
+        a: {
+          value: 2,
+          writable: false,
+          enumerable: true
+        },
+        b: {
+          get: function() {
+            return "mann";
+          },
+          set: function(value) {
+            console.log(this, value);
+            this.a = value;
+          },
+          enumerable: false,
+          configurable: false
+        }
+      });
+
+      for (var key in obj3) {
+        console.log(key);
+      } //a만 출력됨 세부 설정사항에 enumerable만 true이므로
+    </script>
+  </body>
+</html>
