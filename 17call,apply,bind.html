@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Call, Apply, Bind</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        string: "mann",
+        yell: function() {
+          console.log(this.string);
+        }
+      };
+
+      var obj2 = {
+        string: "gold"
+      };
+
+      obj.yell(); // mann 출력
+      obj.yell.call(obj2); // gold 출력
+      obj.yell.apply(obj2); //gold 출력
+
+      //call과 apply를 통해서 다른 객체의 함수를 자기 함수처럼 사용이 가능하다. (선언과 동시에 호출 일회성)
+
+      var obj3 = {
+        string: "coding",
+        yell: function() {
+          console.log(this.string);
+        }
+      };
+
+      var obj4 = {
+        string: "tomato"
+      };
+      obj3.yell(); // coding 호출
+      var yellTomato = obj3.yell.bind(obj4); //yellTomato를 선언 (계속 적용됨)
+      yellTomato(); // 호출시 tomato 호출됨
+
+      function example() {
+        console.log(arguments); //함수에 들어오는 인자를 '유사 배열' 로 만들어준다. (배열 아님 중요!)
+      }
+
+      example(1, "2", true); //[1, "2", true]
+
+      function example2() {
+        console.log(arguments.join());
+      }
+
+      example2(1, "2", true); //유사 배열이기 때문에 에러 출력
+
+      function example3() {
+        console.log(Array.prototype.join.call(arguments)); //Array.prototype.join을 사용하는데 arguments를 call하여 사용한다.
+      }
+
+      example3(1, "2", true); //정상적인 값 출력
+    </script>
+  </body>
+</html>
