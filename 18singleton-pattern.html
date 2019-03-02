@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Single turn pattern</title>
+  </head>
+  <body>
+    <script>
+      //Singleton pattern 이란? - 객체를 만들 때 하나의 생성자로 여러 객체를 만들 수 있지만 싱글턴은 필요에 의해 단 하나의 객체만을 만들 때 사용
+      var obj = {
+        a: "string",
+        b: function() {
+          console.log(this.a);
+        }
+      };
+
+      var singleton = (function() {
+        //IIFE를 이용한 비공개 변수 활용
+        var instance;
+        var a = "hello";
+        function initiate() {
+          return {
+            a: a,
+            b: function() {
+              alert(a);
+            }
+          };
+        }
+        return {
+          getInstance: function() {
+            if (!instance) {
+              instance = initiate(); //처음 호출 할 때, 이 과정을 거침
+            }
+            return instance; //이후 바로 instance를 호출
+          }
+        };
+      })();
+
+      var first = singleton.getInstance();
+      var second = singleton.getInstance(); //값은 같다.
+
+      //생성자 패턴
+
+      var Vehicle = function() {
+        function Vehicle(name, speed) {
+          this.name = name;
+          this.speed = speed;
+        }
+        Vehicle.prototype.drive = function() {
+          console.log(`${this.name} runs at ${this.speed}`);
+        };
+
+        return Vehicle; //IIFE라서 바로 변수 Vehicle에 생성자 Vehicle이 덮어씌워진다.
+      };
+    </script>
+  </body>
+</html>
