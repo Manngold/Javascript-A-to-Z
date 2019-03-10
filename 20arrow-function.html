@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arrow Function</title>
+  </head>
+  <body>
+    <script>
+      //es5 function
+
+      function sayHello(name) {
+        return "Hello " + name; //꼭 return을 해줘야 한다. 없을 때 undefined
+      }
+
+      var manngold = sayHello("manngold");
+
+      console.log(manngold);
+
+      //es6 arrow function
+
+      const sayHello2 = name => `Hello ${name}`; //arrow function에는 디폴트로 return 기능이 있음
+
+      const lego = sayHello2("lego");
+
+      console.log(lego);
+      //default parameter
+
+      function boost(speed = 20) {
+        //default parameter 값을 넣어줄 수 있다. 만약 디폴트 값을 설정을 안하면 undefined가 출력 됨
+        return "boost speed is " + speed;
+      }
+
+      const suv = boost();
+      console.log(suv);
+    </script>
+  </body>
+</html>
