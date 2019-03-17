@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Call Stack</title>
+  </head>
+  <body>
+    <script>
+      //call stack이란 js가 함수 실행을 관리하는 방식
+      //stack의 의미 처럼 함수 실행이 쌓이는 형식
+
+      function three() {
+        console.log("last one");
+      }
+      function two() {
+        three();
+      }
+      function one() {
+        two();
+      }
+      function zero() {
+        one();
+      }
+
+      zero();
+      //zero - one - two - three - console.log(three end) - two end - one end - zero end 의 형식으로 first in last out 형태를 보인다
+
+      function stack0() {
+        stack1();
+      }
+      function stack1() {
+        stack2();
+        throw Error("error is occured when stack2, 3 end"); //에러 발생시 dev tool에서 콜스택을 확인 할 수 있음
+      }
+      function stack2() {
+        stack3();
+      }
+      function stack3() {
+        console.log("last stack and then pop it up");
+      }
+      stack0();
+    </script>
+  </body>
+</html>
