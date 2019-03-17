@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Primitive-Type</title>
+  </head>
+  <body>
+    <script>
+      let str = "hello";
+      let num = 123; //string num다 아는 내용이니 패스
+
+      let str2;
+      console.log(str2); //undefined
+      //undefinde와 null의 차이를 str2에서 보자면 변수를 선언만 하고 값을 입력은 안했다면 정의가 안됐으므로 undefined출력
+      str2 = null; //null 할당
+      console.log(str2); //null
+      //str2라는 변수에 값을 넣었지만 아무 것도 아닌 값이라는 것을 표현하기 위해 null을 입력
+
+      //null : 변수 o 값 정의 o 하지만 그 값이 null
+      //undefinde : 변수 o 값 정의 x
+
+      let nanEx = Math.pow(2, "hi"); //NaN
+      //NaN이란 Not a Number을 뜻하는데 수학적으로 값이 잘못 표현 됐을 때, NaN이 출력된다.
+    </script>
+  </body>
+</html>
