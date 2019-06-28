@@ -26,7 +26,22 @@ const num3 = 4;
 
 const totalNum = (str, num) => {
     const strToNum = str.length;
-    return strToNum + num;
+    return strToNum + num; //return이 없을 경우 반환이 안됨
 };
 
-console.log(totalNum);
+console.log(totalNum(str3, num3));
+
+//ES5의 표현식
+
+var even = [2, 4, 6, 8];
+
+var odd = even.map(function(element){
+    return element + 1;
+})
+
+console.log(odd); // [3, 5, 7, 9]
+//ES6는 arrows를 이용하여 간결하게 표현 가능
+
+let odd = even.map(even => even + 1);
+console.log(odd);
+
